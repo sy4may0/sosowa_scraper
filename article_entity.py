@@ -13,6 +13,7 @@ class article_entity():
     #
     def __init__(self):
         self.__article_data = dict()
+        self.__article_data['p_belong'] = None
         self.__article_data['id'] = None
         self.__article_data['title'] = None
         self.__article_data['author'] = None
@@ -24,6 +25,8 @@ class article_entity():
         self.__article_data['points'] = None
         self.__article_data['rate'] = None
         self.__article_data['tag'] = None
+        self.__article_data['content'] = None
+        self.__article_data['afterword'] = None
 
     # set_article()
     # Set article data.
@@ -52,10 +55,10 @@ class article_entity():
         else:
             raise KeyNotFoundException(key)
 
-    # to_string()
-    # Generate shaping text data.
+    # show_detail()
+    # show shaping detail text data.
     #
-    def to_string(self):
+    def show_detail(self):
         result = []
 
         result.append(self.__article_data['id'])
@@ -100,6 +103,20 @@ class article_entity():
                 result.append(t)
                 result.append(" ")
             
+        print("".join(result))
+
+    # show_content()
+    # show shaping content data.
+    #
+    def show_content(self):
+        result = []
+        result.append("[TITLE]\n")
+        result.append(self.__article_data['title'])
+        result.append("\n\n[CONTENT]\n")
+        result.append(self.__article_data['content'])
+        result.append("\n\n[AFTERWORD]\n")
+        result.append(self.__article_data['afterword'])
+
         print("".join(result))
 
 ####
